@@ -10,3 +10,8 @@ main {
 .template {
     display: none;
 }
+
+h1 {
+    font-weight: bold;
+    font-size: 3em;
+}

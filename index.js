@@ -4,12 +4,19 @@ const app = {
         this.list = document.querySelector(selectors.listSelector)
         this.flicks = []
         this.template = document.querySelector(selectors.templateSelector)
-
+        this.delButton = document.querySelector(selectors.delButtonSelector)
+        //console.log(this.delButton)
         document
             .querySelector(selectors.formSelector)
             .addEventListener('submit', (ev) => {
                 ev.preventDefault()
                 this.handleSubmit(ev)
+            })
+        document
+            .querySelector(selectors.delButtonSelector)
+            .addEventListener('submit', (ev) => {
+                ev.preventDefault()
+                this.removeListItem(ev)
             })
     },
 
@@ -21,6 +28,18 @@ const app = {
             .querySelector('.flickName')
             .textContent = flick.name
         return item
+    },
+
+    removeListItem(ev){
+        const f = ev.target
+        const flick = {
+            id: ++this.max, 
+            name: f.flickName.value,
+        }
+        const item = this.renderListItem(flick)
+        //this.list.appendChild(item)
+        this.list.removeChildElement(item, this.list.firstElementChild)
+        f.reset()
     },
 
     handleSubmit(ev){
@@ -43,5 +62,6 @@ const app = {
 app.init({
     formSelector: '#flickForm',
     listSelector: '#flickList',
-    templateSelector: '.flick.template' //matches any class with both flick and template elements
+    templateSelector: '.flick.template', //matches any class with both flick and template elements
+    delButtonSelector: '#delB',
 })
