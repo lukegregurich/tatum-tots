@@ -26,11 +26,12 @@ const app = {
             name: f.flickName.value,
         }
 
-        this.flicks.push(flick) //push to array
+        this.flicks.unshift(flick) //push to array
 
         //adding it to the DOM
         const item = this.renderListItem(flick)
-        this.list.appendChild(item)
+        //this.list.appendChild(item)
+        this.list.insertBefore(item, this.list.firstElementChild)
         f.reset()
     },
 }
