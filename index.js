@@ -2,7 +2,8 @@ const app = {
     init(selectors) { // same as init: function(selectors)
         this.max = 0;
         this.list = document.querySelector(selectors.listSelector)
-        
+        this.flicks = []
+
         document
             .querySelector(selectors.formSelector)
             .addEventListener('submit', (ev) => {
@@ -23,6 +24,10 @@ const app = {
             id: ++this.max, 
             name: f.flickName.value,
         }
+
+        this.flicks.push(flick) //push to array
+
+        //adding it to the DOM
         const item = this.renderListItem(flick)
         this.list.appendChild(item)
         f.reset()
