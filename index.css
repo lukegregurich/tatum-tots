@@ -6,3 +6,7 @@ main {
 .flickName {
     margin: 0 0;
 }
+
+.template {
+    display: none;
+}
