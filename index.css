@@ -15,3 +15,7 @@ h1 {
     font-weight: bold;
     font-size: 3em;
 }
+
+.flick.fav {
+    background-color: #62e6ff;
+}
