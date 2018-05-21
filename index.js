@@ -13,9 +13,15 @@ const app = {
             })
     },
 
-    removeFlick(ev){
-       const item = ev.target.closest('.flick')
-       item.remove() //removes item from the DOM
+    removeFlick(flick, ev){
+        //removes item from the DOM
+        const item = ev.target.closest('.flick') //ev.target points to the button
+        item.remove() 
+
+        //removes item from the array
+        const i = this.flicks.indexOf(flick)
+        this.flicks.splice(i , 1)
+
     },
 
     renderListItem(flick){
@@ -28,7 +34,8 @@ const app = {
 
         item   
             .querySelector('.remove.button')
-            .addEventListener('click', this.removeFlick)
+            .addEventListener('click', this.removeFlick.bind(this, flick))
+            //"this" refers to the entire app object
         return item
     },
 
