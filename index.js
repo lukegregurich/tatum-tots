@@ -19,6 +19,7 @@ class App {
         item.remove() 
 
         //removes item from the array
+        // yes
         const i = this.flicks.indexOf(flick)
         this.flicks.splice(i , 1)
     }
